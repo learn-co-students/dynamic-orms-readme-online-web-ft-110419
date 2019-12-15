@@ -1,11 +1,12 @@
 require_relative "../config/environment.rb"
-require 'active_support/inflector'
+# require 'active_support/inflector'
 
 class Song
 
 
   def self.table_name
-    self.to_s.downcase.pluralize
+    # self.to_s.downcase.pluralize
+    self.to_s.downcase + "s"
   end
 
   def self.column_names
@@ -27,6 +28,7 @@ class Song
 
   def initialize(options={})
     options.each do |property, value|
+
       self.send("#{property}=", value)
     end
   end
@@ -46,6 +48,7 @@ class Song
     self.class.column_names.each do |col_name|
       values << "'#{send(col_name)}'" unless send(col_name).nil?
     end
+    binding.pry
     values.join(", ")
   end
 
