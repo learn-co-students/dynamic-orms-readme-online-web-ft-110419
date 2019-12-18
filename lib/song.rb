@@ -1,3 +1,4 @@
+
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
 
@@ -40,6 +41,7 @@ class Song
   def table_name_for_insert
     self.class.table_name
   end
+  
 
   def values_for_insert
     values = []
